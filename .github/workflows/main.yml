@@ -28,3 +28,10 @@ jobs:
       # Runs the bash builder
       - name: Run the bash build script
         run: .github/build.sh
+      
+      # Upload artifcats
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: install
+          path: "./one-install"
