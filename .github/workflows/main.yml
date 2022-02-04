@@ -52,4 +52,5 @@ jobs:
           name: install
           asset_path: "./one-install"
           asset_name: install
+          asset_content_type: application/x-sh
           upload_url: ${{ steps.create_release.outputs.upload_url }}
