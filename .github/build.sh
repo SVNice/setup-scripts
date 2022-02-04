@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-cat install | grep '. \.(.*)' > one-install
+cat install | grep '\. \.(.*)' > one-install
