@@ -50,4 +50,6 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           name: install
-          path: "./one-install"
+          asset_path: "./one-install"
+          asset_name: install
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
