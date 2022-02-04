@@ -32,10 +32,23 @@ jobs:
       # Runs the bash builder
       - name: Run the bash build script
         run: .github/build.sh
-      
-      # Upload artifcats
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        
+      ## Release stuff ##
+      - name: release
+        uses: actions/create-release@v2
+        id: create_release
+        with:
+          draft: false
+          prerelease: true
+          release_name: ${{ steps.version.outputs.version }}
+          tag_name: ${{ github.ref }}, test
+          body_path: CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+    
+      # Upload release stuff
+      - name: Upload release
+        uses: actions/upload-release-asset@v2
         with:
           name: install
           path: "./one-install"
