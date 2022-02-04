@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+programs=(
+"fail2ban"
+"unattended-upgrades"
+)
+
+apt install -y ${programs[@]}
