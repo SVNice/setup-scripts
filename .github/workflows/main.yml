@@ -48,7 +48,7 @@ jobs:
     
       # Upload release stuff
       - name: Upload release
-        uses: actions/upload-release-asset@v2
+        uses: actions/upload-release-asset@v1
         with:
           name: install
           path: "./one-install"
