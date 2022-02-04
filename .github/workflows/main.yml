@@ -24,11 +24,10 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      
       # Runs the bash builder
-      - name: Run the bash build script
-        run: |
-          ls
-          ls .github
+      - name: Get scripts to run
+        run: chmod +x .github/*
           
       # Runs the bash builder
       - name: Run the bash build script
