@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+ssh_file="/etc/ssh/sshd_config"
+
+configs=(
+"PermitRootLogin no"
+"PasswordAuthentication no"
+"ChallengeResponseAuthentication no"
+"PermitEmtpyPasswords no"
+"IgnoreRhosts yes"
+"PubkeyAuthentication yes"
+"X11Forwarding no"
+)
+
+for config in "${configs[@]}"; do
+   setting=$(echo $config | awk '{print $1}')
+   value=$(echo $config | awk '{print $2}')
+   echo Changing $setting to $value
+   sed -i "s/.*$setting.*/$config # Auto set/gI" $ssh_file
+done
+echo "Restarting service"
+systemctl restart sshd
