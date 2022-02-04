@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+echo "Setting up ssh"
+. ./ssh-config
+echo "Installing programs"
+. ./programs
