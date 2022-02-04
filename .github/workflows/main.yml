@@ -33,7 +33,19 @@ jobs:
       - name: Run the bash build script
         run: .github/build.sh
         
-      ## Release stuff ##
+      ## Release stuff ##    
+      # Upload release stuff
+      - name: Upload release
+        uses: actions/upload-release-asset@v1
+        with:
+          name: install
+          asset_path: "./one-install"
+          asset_name: install
+          asset_content_type: application/x-sh
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          
       - name: release
         uses: actions/create-release@v1
         id: create_release
@@ -44,13 +56,4 @@ jobs:
           tag_name: "test"
         env:
           GITHUB_TOKEN: ${{ github.token }}
-    
-      # Upload release stuff
-      - name: Upload release
-        uses: actions/upload-release-asset@v1
-        with:
-          name: install
-          asset_path: "./one-install"
-          asset_name: install
-          asset_content_type: application/x-sh
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
+
