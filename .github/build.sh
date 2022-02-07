@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
-echo $(pwd)
-echo $(ls)
-cat install | sed -rn 's/\. \.\/(.*)/\1/p' | xargs cat > one-install
+echo "#!/usr/bin/env bash" > one-install
+cat install | sed -rn 's/\. \.\/(.*)/\1/p' | xargs cat | grep -v "#!" >> one-install
